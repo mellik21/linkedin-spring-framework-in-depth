@@ -1,24 +1,19 @@
 package com.github.mellik21.service;
 
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAmount;
-import java.util.Locale;
 
+@Service
 @Getter
-@Setter
+@NoArgsConstructor
 public class TimeService {
+    @Value("#{new Boolean(environment['spring.profiles.active']!='dev')}")
     private boolean is24;
-
-    public TimeService(boolean is24) {
-        this.is24 = is24;
-    }
 
     public String getTime() {
         OffsetDateTime odt = OffsetDateTime.MAX;
@@ -26,7 +21,6 @@ public class TimeService {
         return is24 ?
                 DateTimeFormatter.ofPattern("HH:mm:ss").format(odt)
                 : DateTimeFormatter.ofPattern("hh:mm:ss a").format(odt);
-
 
     }
 }

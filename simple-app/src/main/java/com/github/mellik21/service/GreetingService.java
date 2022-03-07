@@ -1,14 +1,15 @@
 package com.github.mellik21.service;
 
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-@Setter
+@Service
 @Getter
+@NoArgsConstructor
 public class GreetingService {
+    @Value("${app.greeting}")
     private String greeting;
 
-    public GreetingService(String greeting){
-        this.greeting=greeting;
-    }
 }
