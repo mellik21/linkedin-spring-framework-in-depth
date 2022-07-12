@@ -16,8 +16,7 @@ public class TimeService {
     private boolean is24;
 
     public String getTime() {
-        OffsetDateTime odt = OffsetDateTime.MAX;
-        System.out.println(is24);
+        OffsetDateTime odt = OffsetDateTime.now();
         return is24 ?
                 DateTimeFormatter.ofPattern("HH:mm:ss").format(odt)
                 : DateTimeFormatter.ofPattern("hh:mm:ss a").format(odt);

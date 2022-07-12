@@ -19,7 +19,7 @@ public class OutputService {
 
     public void generateOutput() {
         System.out.print(timeService.getTime()+" ");
-        System.out.print(greetingService.getGreeting()+" ");
+        System.out.print(greetingService.getGreeting("mellik21")+" ");
         System.out.println(name);
     }
 }
